@@ -1,0 +1,20 @@
+{
+  "name": "test-pkg",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "types": "./dist/src/index.d.ts",
+  "main": "./dist/src/index.js",
+  "scripts": {
+    "build": "npx tsc --build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "test-lib": "file:../test-lib"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
