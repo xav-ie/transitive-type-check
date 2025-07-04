@@ -16,7 +16,7 @@ source maps:
 
 https://github.com/Swatinem/rollup-plugin-dts/issues/113
 
-So, this script, `check_bad_types.nu`, takes your `./dist` files and finds which
+So, this script, `check-transitive-types.nu`, takes your `./dist` files and finds which
 type `dependencies` are incorrectly declared in `devDependencies` when they should
 be in `dependencies` or `peerDependencies`!
 
@@ -64,14 +64,14 @@ This is transitive types being elided silently! Very sad. 😞
 4. Now, run this in a POSIX shell:
 
 ```bash
-(cd test-lib && check_bad_types)
+(cd test-lib && check-transitive-types)
 ```
 
-^ this assumes you use devenv.
-If you don't have devenv, try this:
+^ this assumes you setup with Nix.
+If you don't have Nix, try this:
 
 ```bash
-(cd test-lib && nu ../check_bad_types.nu)
+(cd test-lib && nu ../check-transitive-types.nu)
 ```
 
 ^ You need to have Nushell installed. I recommend it. It is great.
@@ -81,7 +81,7 @@ https://nushell.sh
 5. notice this output:
 
 ```sh
- check_bad_types
+ check-transitive-types
 Found entry points: ./dist/src/index.js
 Consider moving these devDependencies into dependencies or peerDependencies.
 Not doing so will likely result in bad exported types.
@@ -99,27 +99,32 @@ miss this seemingly simple issue with publishing types.
 
 1. Make sure you have Nushell installed on your system.
 2. `cd` to your library
-3. `nu check_bad_types.nu` in that folder
+3. `nu check-transitive-types.nu` in that folder
 
-It runs relative to invocation, so `check_bad_types.nu` may exist anywhere.
+It runs relative to invocation, so `check-transitive-types.nu` may exist anywhere.
 
 You should receive actionable feedback if you are unexpectedly exporting bad
 types.
 
+> [!NOTE]
+> If you have `nix`, you can also run this without needing it on your system:
+>
+> `nix run github:xav-ie/transitive-type-check`
+
 ## Development setup ❄️
 
-I recommend you install devenv at https://devenv.sh.
+I recommend you install Nix, the package manager of choice for this project:
+https://nixos.org/
 
-To get automatic shell start, I also recommend direnv. You can install this on
-most any package manager.
+Then, just run this:
 
-Then, all you have to do is go here and type `direnv allow`.
+```bash
+nix develop --no-pure-eval
+```
 
 This will ensure we are testing with the exact same dependencies.
 
-You don't have to use direnv. You can start the shell manually with `devenv shell`.
-
-You don't have to use devenv, but then you are now responsible for installing
+You don't have to use Nix, but then you are now responsible for installing
 these deps yourself:
 
 - Nushell - https://nushell.sh
