@@ -17,7 +17,7 @@ source maps:
 
 https://github.com/Swatinem/rollup-plugin-dts/issues/113
 
-So, this script, `check-transitive-types.nu`, takes your `./dist` files and finds which
+So, this package, `check-transitive-types`, takes your `./dist` files and finds which
 type `dependencies` are incorrectly declared in `devDependencies` when they should
 be in `dependencies` or `peerDependencies`!
 
@@ -72,23 +72,20 @@ This is transitive types being elided silently! Very sad. 😞
 If you don't have Nix, try this:
 
 ```bash
-(cd test-lib && nu ../check-transitive-types.nu)
+(ch check-transitive-types && npm i && npm run build)
+(cd test-lib && node ../check-transitive-types/dist/src/index.js)
 ```
-
-^ You need to have Nushell installed. I recommend it. It is great.
-
-https://nushell.sh
 
 5. notice this output:
 
 ```sh
  check-transitive-types
 Found entry points: ./dist/src/index.js
-Consider moving these devDependencies into dependencies or peerDependencies.
+✅ Found 1 TypeScript source(s) for ./dist/src/index.js
+Consider moving these devDependencies into
+dependencies or peerDependencies.
 Not doing so will likely result in bad exported types.
-╭───┬──────────────╮
-│ 0 │ @types/react │
-╰───┴──────────────╯
+[ '@types/react' ]
 ```
 
 Notice how the script gives actionable feedback about your library.
@@ -100,9 +97,9 @@ miss this seemingly simple issue with publishing types.
 
 1. Make sure you have Nushell installed on your system.
 2. `cd` to your library
-3. `nu check-transitive-types.nu` in that folder
+3. `npx check-transitive-types` in that folder
 
-It runs relative to invocation, so `check-transitive-types.nu` may exist anywhere.
+It runs relative to invocation, so `check-transitive-types` may exist anywhere.
 
 You should receive actionable feedback if you are unexpectedly exporting bad
 types.
@@ -128,7 +125,6 @@ This will ensure we are testing with the exact same dependencies.
 You don't have to use Nix, but then you are now responsible for installing
 these deps yourself:
 
-- Nushell - https://nushell.sh
 - Node - https://nodejs.org
 - NPM - comes with Node (full version)
 

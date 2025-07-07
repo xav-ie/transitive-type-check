@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "lib": ["ESNext"],
+    "allowJs": true,
+    "strict": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "outDir": "./dist/",
+    "rootDir": ".",
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true
+  },
+  "include": ["src", "./eslint.config.js"],
+  "exclude": []
+}

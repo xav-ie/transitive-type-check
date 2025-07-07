@@ -10,7 +10,6 @@
     nix2container.inputs.nixpkgs.follows = "nixpkgs";
     nix2container.url = "github:nlewo/nix2container";
     nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
-    nuenv.url = "github:DeterminateSystems/nuenv";
     systems.url = "github:nix-systems/default";
   };
 
@@ -41,10 +40,7 @@
           # module parameters provide easy access to attributes of the same
           # system.
 
-          packages.default = inputs.nuenv.lib.mkNushellScript pkgs.nushell pkgs.writeTextFile {
-            name = "check-transitive-types";
-            script = builtins.readFile ./check_transitive_types.nu;
-          };
+          packages.default = pkgs.callPackage ./check-transitive-types/check-transitive-types.nix { };
 
           devenv.shells.default = {
             name = "check-transitive-types-shell";
@@ -63,7 +59,6 @@
 
             packages = [
               config.packages.default
-              pkgs.nushell
             ];
 
           };

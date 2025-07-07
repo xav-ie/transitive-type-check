@@ -1,0 +1,41 @@
+{
+  "name": "check-transitive-types",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "module": "./dist/src/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js",
+      "require": "./dist/src/index.js"
+    }
+  },
+  "bin": {
+    "check-transitive-types": "./dist/src/index.js"
+  },
+  "scripts": {
+    "lint": "npx eslint --cache .",
+    "build": "tsc --build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/node": "^24.0.10",
+    "@types/yargs": "^17.0.33",
+    "eslint": "^9.30.1",
+    "eslint-plugin-unicorn": "^59.0.1",
+    "globals": "^16.3.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.1"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.6.0",
+    "arktype": "^2.1.20",
+    "dedent": "^1.6.0",
+    "yargs": "^18.0.0"
+  }
+}
