@@ -72,7 +72,7 @@ This is transitive types being elided silently! Very sad. 😞
 If you don't have Nix, try this:
 
 ```bash
-(ch check-transitive-types && npm i && npm run build)
+(cd check-transitive-types && npm i && npm run build)
 (cd test-lib && node ../check-transitive-types/dist/src/index.js)
 ```
 
