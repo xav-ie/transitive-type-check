@@ -41,18 +41,20 @@ try {
     let devDeps = ($pkg | get devDependencies? | default {} | columns)
     ($in not-in $peerDeps) and ($in not-in $deps) and ($in in $devDeps)
   }
-  | filter {||
-    if ($in | str starts-with "@types/") {
-      # Extract the base package name from @types/foo -> foo
-      let base_pkg = ($in | str replace "@types/" "" | str replace "__" "/")
-      let deps = ($pkg | get dependencies? | default {} | columns)
-      let devDeps = ($pkg | get devDependencies? | default {} | columns)
-      # Only flag @types packages if the base package is in dependencies
-      $base_pkg in $deps or $"@($base_pkg)" in $deps
-    } else {
-      true
-    }
-  }
+  # TODO: this filter needs some more work to become more accurate.
+  # It sometimes filters out true positive cases.
+  # | filter {||
+  #   if ($in | str starts-with "@types/") {
+  #     # Extract the base package name from @types/foo -> foo
+  #     let base_pkg = ($in | str replace "@types/" "" | str replace "__" "/")
+  #     let deps = ($pkg | get dependencies? | default {} | columns)
+  #     let devDeps = ($pkg | get devDependencies? | default {} | columns)
+  #     # Only flag @types packages if the base package is in dependencies
+  #     $base_pkg in $deps or $"@($base_pkg)" in $deps
+  #   } else {
+  #     true
+  #   }
+  # }
   | filter {|| $in != "typescript" })
 
   print ([
