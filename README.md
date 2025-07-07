@@ -2,10 +2,11 @@
 
 I found my exported library types were resolving as `any` for users. This is
 because an exported type that depends on a library in `devDependencies` does not
-get resolved. There's also no easy way to check this (..right?!).
+get installed. These transitive dependencies can cause suprising type errors
+for users of your library.
 
-You could try bundling all your exported types, but TypeScript doesn't
-recommend it:
+One way to fix this is to try bundling all your imported/exported exported
+types, but TypeScript doesn't recommend it:
 
 https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html#packaging-dependent-declarations
 
@@ -43,8 +44,8 @@ and better simulates real-world use case. You don't have to add
 1. Run this in a POSIX (bash, zsh, etc.) shell. You can copy paste all of it.
 
 ```bash
-(cd test-pkg && npm i && npm run build)
-(cd test-lib && npm i && npm run build)
+(cd test-lib && npm i && npm run build && npm pack)
+(cd test-pkg && npm i && npm run build && npm i ../test-lib/test-lib-1.0.0.tgz)
 ```
 
 2. Then, open `./test-pkg/dist/src/index.d.ts`. Also, open `./test-pkg/src/index.ts`.
@@ -133,3 +134,18 @@ these deps yourself:
 
 If these instructions are not clear or you get stuck, please let me know. I
 would be happy to help.
+
+## Why `npm pack`?
+
+You might be tempted to use `npm link` in the test-lib package and then do `npm i ../test-lib --install-links`.
+
+This seems to work mostly correctly except `npm link` never resolves transitive dependencies, even when they are properly declared.
+
+Therefore, please use `npm pack` or any other better local testing alternative. These two might also be good, but I have yet to try:
+
+- https://github.com/privatenumber/link
+- https://github.com/wclr/yalc
+
+In general, you will face many issues with `npm link`, please do not use it. Here is a post on why you should reconsider using it:
+
+- https://hirok.io/posts/avoid-npm-link
