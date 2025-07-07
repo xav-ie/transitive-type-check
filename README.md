@@ -96,9 +96,9 @@ miss this seemingly simple issue with publishing types.
 ## To use on your libraries 🐁
 
 1. `cd` to your library
-2. `npm i -g check-transitive-types` -- you likely don't want this as a
+2. `npm i -g @xav-ie/check-transitive-types` -- you likely don't want this as a
    dependency in your project
-3. `check-transitive-types` or `npx @xav-ie/check-transitive-types` in that folder
+3. `npx check-transitive-types` or `check-transitive-types` in that folder
 
 It runs relative to invocation, so `check-transitive-types` may exist anywhere.
 
