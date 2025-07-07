@@ -1,5 +1,8 @@
 {
   "name": "@xav-ie/check-transitive-types",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "1.0.0",
   "type": "module",
   "main": "./dist/src/index.js",
