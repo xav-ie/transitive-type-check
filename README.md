@@ -141,9 +141,8 @@ You might be tempted to use `npm link` in the test-lib package and then do `npm 
 
 This seems to work mostly correctly except `npm link` never resolves transitive dependencies, even when they are properly declared.
 
-Therefore, please use `npm pack` or any other better local testing alternative. These two might also be good, but I have yet to try:
+Therefore, please use `npm pack` or another local testing alternative. `yalc` is also good, but requires some more setup. It is worth it when you are doing many tests locally.
 
-- https://github.com/privatenumber/link
 - https://github.com/wclr/yalc
 
 In general, you will face many issues with `npm link`, please do not use it. Here is a post on why you should reconsider using it:
