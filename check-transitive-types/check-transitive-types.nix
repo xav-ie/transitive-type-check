@@ -1,7 +1,6 @@
 {
   lib,
   buildNpmPackage,
-# fetchFromGitHub,
 }:
 
 buildNpmPackage (finalAttrs: {
@@ -10,7 +9,7 @@ buildNpmPackage (finalAttrs: {
 
   src = ./.;
 
-  npmDepsHash = "sha256-J/GiILsZTDRuePgNg7eXKYPjvKXKkT7MU/t+i8qEMk8=";
+  npmDepsHash = "sha256-O7BoNFAk1ZUHWUdFJFFkHTitampq/vNfh+KXX8iO3Pk=";
 
   # The prepack script runs the build script, which we'd rather do in the build phase.
   npmPackFlags = [ "--ignore-scripts" ];
