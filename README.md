@@ -97,7 +97,9 @@ miss this seemingly simple issue with publishing types.
 
 1. Make sure you have Nushell installed on your system.
 2. `cd` to your library
-3. `npx check-transitive-types` in that folder
+3. `npm i -g check-transitive-types` -- you likely don't want this as a
+   dependency in your project
+4. `check-transitive-types` or `npx @xav-ie/check-transitive-types` in that folder
 
 It runs relative to invocation, so `check-transitive-types` may exist anywhere.
 

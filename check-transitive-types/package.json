@@ -1,5 +1,5 @@
 {
-  "name": "check-transitive-types",
+  "name": "@xav-ie/check-transitive-types",
   "version": "1.0.0",
   "type": "module",
   "main": "./dist/src/index.js",
@@ -15,6 +15,7 @@
     "check-transitive-types": "./dist/src/index.js"
   },
   "scripts": {
+    "preversion": "npm run built && npm run lint",
     "lint": "npx eslint --cache .",
     "build": "tsc --build"
   },
