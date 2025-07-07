@@ -62,7 +62,7 @@ in `12` when this is clearly wrong.
 
 This is transitive types being elided silently! Very sad. 😞
 
-4. Now, run this in a POSIX shell:
+4. Now, run this to run the checker:
 
 ```bash
 (cd test-lib && check-transitive-types)
@@ -95,11 +95,10 @@ miss this seemingly simple issue with publishing types.
 
 ## To use on your libraries 🐁
 
-1. Make sure you have Nushell installed on your system.
-2. `cd` to your library
-3. `npm i -g check-transitive-types` -- you likely don't want this as a
+1. `cd` to your library
+2. `npm i -g check-transitive-types` -- you likely don't want this as a
    dependency in your project
-4. `check-transitive-types` or `npx @xav-ie/check-transitive-types` in that folder
+3. `check-transitive-types` or `npx @xav-ie/check-transitive-types` in that folder
 
 It runs relative to invocation, so `check-transitive-types` may exist anywhere.
 
