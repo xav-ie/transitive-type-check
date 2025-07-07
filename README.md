@@ -50,7 +50,7 @@ and better simulates real-world use case. You don't have to add
 
 2. Then, open `./test-pkg/dist/src/index.d.ts`. Also, open `./test-pkg/src/index.ts`.
 
-3. In the source file, notice there is no complaints from `tsserver`. This is because
+3. In the source file, notice there are no complaints from `tsserver`. This is because
    `ForwardedRef` is typed as `any`.
 
 In the dist file, notice it seems to know a little bit more, and complains about
